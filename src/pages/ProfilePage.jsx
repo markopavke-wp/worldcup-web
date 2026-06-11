@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import { formatPrediction } from '../lib/outcome';
+import PageHeader from '../components/PageHeader';
 
 export default function ProfilePage() {
   const { user } = useAuth();
@@ -22,17 +23,17 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <h1 className="page-title">Moj profil</h1>
+      <PageHeader icon="👤" title="Moj profil" subtitle="Tvoji podaci i odigrani tipovi" />
 
       <div className="profile-grid">
-        <div className="card">
-          <h3>Podaci</h3>
+        <div className="card wc-card">
+          <h3>📋 Podaci</h3>
           <p><span className="label">Ime:</span> {user?.displayName}</p>
           <p><span className="label">Email:</span> {user?.email}</p>
         </div>
 
-        <div className="card">
-          <h3>Statistika</h3>
+        <div className="card wc-card">
+          <h3>🏆 Statistika</h3>
           {loading ? (
             <p className="empty">Učitavam...</p>
           ) : (
@@ -50,7 +51,7 @@ export default function ProfilePage() {
       {predictions.length === 0 ? (
         <p className="empty">Još nisi uneo nijednu prognozu.</p>
       ) : (
-        <div className="card table-wrap">
+        <div className="card wc-card table-wrap">
           <table className="data-table">
             <thead>
               <tr>

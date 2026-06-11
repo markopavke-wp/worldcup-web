@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api } from '../api/client';
 import MatchCard from '../components/MatchCard';
+import PageHeader from '../components/PageHeader';
 
 export default function MatchesPage() {
   const [matches, setMatches] = useState([]);
@@ -35,13 +36,11 @@ export default function MatchesPage() {
 
   return (
     <div>
-      <div className="page-header">
-        <div>
-          <h1 className="page-title">Utakmice</h1>
-          <p className="page-subtitle">
-            Izaberi ishod (1 poen) i opciono tačan rezultat (2 poena). Oba pogodjena = 3 poena.
-          </p>
-        </div>
+      <PageHeader
+        icon="⚽"
+        title="Utakmice"
+        subtitle="Izaberi ishod (1 poen) i opciono tačan rezultat (2 poena). Oba pogodjena = 3 poena."
+      >
         <div className="filters">
           {['all', 'open', 'finished'].map((f) => (
             <button
@@ -54,7 +53,7 @@ export default function MatchesPage() {
             </button>
           ))}
         </div>
-      </div>
+      </PageHeader>
 
       {loading && <p className="empty">Učitavam utakmice...</p>}
       {error && <p className="error">{error}</p>}

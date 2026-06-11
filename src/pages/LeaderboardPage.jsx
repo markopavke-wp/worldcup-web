@@ -2,6 +2,14 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import PageHeader from '../components/PageHeader';
+
+function RankCell({ rank }) {
+  if (rank <= 3) {
+    return <span className={`rank-badge rank-badge--${rank}`}>{rank}</span>;
+  }
+  return rank;
+}
 
 export default function LeaderboardPage() {
   const { user } = useAuth();
@@ -18,16 +26,17 @@ export default function LeaderboardPage() {
 
   return (
     <div>
-      <h1 className="page-title">Tabela takmičara</h1>
-      <p className="page-subtitle">
-        1 poen ishod · 2 poena rezultat · 3 poena oba. Klikni na igrača za tipove na završenim utakmicama.
-      </p>
+      <PageHeader
+        icon="🏆"
+        title="Tabela takmičara"
+        subtitle="1 poen ishod · 2 poena rezultat · 3 poena oba. Klikni na igrača za tipove na završenim utakmicama."
+      />
 
       {loading && <p className="empty">Učitavam...</p>}
       {error && <p className="error">{error}</p>}
 
       {!loading && !error && (
-        <div className="card table-wrap leaderboard-wrap">
+        <div className="card wc-card table-wrap leaderboard-wrap">
           <table className="data-table leaderboard-table">
             <thead>
               <tr>
@@ -41,7 +50,7 @@ export default function LeaderboardPage() {
             <tbody>
               {leaderboard.map((row) => (
                 <tr key={row.userId} className={row.userId === user?.id ? 'me' : ''}>
-                  <td>{row.rank}</td>
+                  <td><RankCell rank={row.rank} /></td>
                   <td className="player-cell">
                     {row.userId === user?.id ? (
                       <Link to="/profile" className="player-link">{row.displayName}</Link>

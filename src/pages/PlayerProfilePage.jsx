@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import { formatPrediction } from '../lib/outcome';
+import PageHeader from '../components/PageHeader';
 
 export default function PlayerProfilePage() {
   const { userId } = useParams();
@@ -42,16 +43,19 @@ export default function PlayerProfilePage() {
 
       {!loading && !error && player && (
         <>
-          <h1 className="page-title">{player.displayName}</h1>
-          <p className="page-subtitle">Tipovi na završenim utakmicama</p>
+          <PageHeader
+            icon="⚽"
+            title={player.displayName}
+            subtitle="Tipovi na završenim utakmicama"
+          />
 
           {stats && (
             <div className="profile-grid player-stats-grid">
-              <div className="card">
+              <div className="card wc-card">
                 <p><span className="label">Ukupno poena:</span> <strong>{stats.totalPoints}</strong></p>
                 <p><span className="label">Rang:</span> #{stats.rank}</p>
               </div>
-              <div className="card">
+              <div className="card wc-card">
                 <p><span className="label">Ishodi:</span> {stats.outcomeHits}</p>
                 <p><span className="label">Tipovi:</span> {stats.predictionsCount}</p>
               </div>
@@ -62,7 +66,7 @@ export default function PlayerProfilePage() {
           {predictions.length === 0 ? (
             <p className="empty">Nema tipova na završenim utakmicama.</p>
           ) : (
-            <div className="card table-wrap">
+            <div className="card wc-card table-wrap">
               <table className="data-table">
                 <thead>
                   <tr>

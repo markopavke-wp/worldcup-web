@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api/client';
+import PageHeader from '../components/PageHeader';
 
 export default function StandingsPage() {
   const [standings, setStandings] = useState([]);
@@ -15,10 +16,11 @@ export default function StandingsPage() {
 
   return (
     <div>
-      <h1 className="page-title">Tabele grupa</h1>
-      <p className="page-subtitle">
-        Rang po završenim utakmicama. Timovi su prikazani sa zastavom i skraćenicom.
-      </p>
+      <PageHeader
+        icon="🌍"
+        title="Tabele grupa"
+        subtitle="Rang po završenim utakmicama. Timovi su prikazani sa zastavom i skraćenicom."
+      />
 
       {loading && <p className="empty">Učitavam...</p>}
       {error && <p className="error">{error}</p>}
@@ -28,7 +30,7 @@ export default function StandingsPage() {
 
       <div className="groups-grid">
         {standings.map((group) => (
-          <div key={group.group} className="card group-card">
+          <div key={group.group} className="card wc-card group-card group-card--wc">
             <h3>{group.group}</h3>
             <div className="table-wrap">
               <table className="standings-table">

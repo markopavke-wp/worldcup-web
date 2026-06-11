@@ -80,7 +80,7 @@ export default function MatchCard({ match, onSaved }) {
   };
 
   return (
-    <article className="match-card card">
+    <article className="match-card card wc-card">
       <div className="match-meta">
         <span>{match.groupName || match.stage}</span>
         <span>{formatDate(match.kickoffAt)}</span>

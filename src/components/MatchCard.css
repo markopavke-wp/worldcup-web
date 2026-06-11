@@ -2,6 +2,10 @@
   margin-bottom: 1rem;
 }
 
+.match-card.wc-card {
+  padding-top: calc(1rem + 3px);
+}
+
 .match-meta {
   display: flex;
   gap: 0.5rem 0.75rem;
