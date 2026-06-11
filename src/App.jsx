@@ -17,7 +17,14 @@ function PrivateRoute({ children }) {
 
 function PublicOnly({ children }) {
   const { user, loading } = useAuth();
-  if (loading) return <p className="empty">Učitavam...</p>;
+  if (loading) {
+    return (
+      <div className="auth-loading">
+        <div className="auth-loading__ball" aria-hidden="true" />
+        <p>Učitavam...</p>
+      </div>
+    );
+  }
   return user ? <Navigate to="/" replace /> : children;
 }
 

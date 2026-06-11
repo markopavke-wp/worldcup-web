@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import './AuthPage.css';
+import AuthShell from '../components/AuthShell';
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -27,34 +27,58 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card card">
-        <h1>Registracija</h1>
-        <p className="auth-subtitle">Kreiraj nalog i uđi u ligu</p>
-
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label className="label">Ime za tabelu</label>
-            <input className="input" value={displayName} onChange={(e) => setDisplayName(e.target.value)} required minLength={2} />
-          </div>
-          <div className="form-group">
-            <label className="label">Email</label>
-            <input className="input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          </div>
-          <div className="form-group">
-            <label className="label">Lozinka (min. 6)</label>
-            <input className="input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
-          </div>
-          {error && <p className="error">{error}</p>}
-          <button className="btn btn-primary auth-btn" type="submit" disabled={loading}>
-            {loading ? 'Kreiram...' : 'Registracija'}
-          </button>
-        </form>
-
+    <AuthShell
+      title="Registracija"
+      subtitle="Kreiraj nalog i takmiči se sa ekipom"
+      footer={(
         <p className="auth-switch">
           Već imaš nalog? <Link to="/login">Prijavi se</Link>
         </p>
-      </div>
-    </div>
+      )}
+    >
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label className="label" htmlFor="register-name">Ime za tabelu</label>
+          <input
+            id="register-name"
+            className="input auth-input"
+            autoComplete="nickname"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            required
+            minLength={2}
+          />
+        </div>
+        <div className="form-group">
+          <label className="label" htmlFor="register-email">Email</label>
+          <input
+            id="register-email"
+            className="input auth-input"
+            type="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label className="label" htmlFor="register-password">Lozinka (min. 6)</label>
+          <input
+            id="register-password"
+            className="input auth-input"
+            type="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            minLength={6}
+          />
+        </div>
+        {error && <p className="error">{error}</p>}
+        <button className="btn btn-primary auth-btn" type="submit" disabled={loading}>
+          {loading ? 'Kreiram...' : 'Kreiraj nalog'}
+        </button>
+      </form>
+    </AuthShell>
   );
 }
