@@ -71,6 +71,23 @@ a {
   opacity: 0.75;
 }
 
+@media (max-width: 767px) {
+  .container {
+    padding-left: max(0.85rem, env(safe-area-inset-left));
+    padding-right: max(0.85rem, env(safe-area-inset-right));
+  }
+
+  .wc-card {
+    padding-top: calc(1rem + 3px);
+    border-radius: 14px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
+  }
+}
+
 @media (min-width: 640px) {
   .card {
     padding: 1.25rem;

@@ -48,6 +48,12 @@ export default function Layout() {
             </span>
           </Link>
 
+          <div className="header-flags-mobile" aria-hidden="true">
+            <img src="/images/flag-mx.png" alt="" />
+            <img src="/images/flag-us.png" alt="" />
+            <img src="/images/flag-ca.png" alt="" />
+          </div>
+
           <nav className="nav nav-desktop" aria-label="Glavna navigacija">
             {navItems.map((item) => (
               <NavLink key={item.to} to={item.to} end={item.end}>
@@ -114,6 +120,15 @@ export default function Layout() {
           onClick={() => setMenuOpen(false)}
         />
       )}
+
+      <div className="wc-mobile-strip" aria-hidden="true">
+        <div className="wc-mobile-strip__flags">
+          <img src="/images/flag-mx.png" alt="" />
+          <img src="/images/flag-us.png" alt="" />
+          <img src="/images/flag-ca.png" alt="" />
+        </div>
+        <span className="wc-mobile-strip__label">FIFA World Cup 2026</span>
+      </div>
 
       <main className="container main-content">
         <Outlet />

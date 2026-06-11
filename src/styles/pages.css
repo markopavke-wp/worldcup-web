@@ -43,6 +43,80 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 767px) {
+  .wc-page-header {
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    background: rgba(19, 29, 46, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wc-page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+  }
+
+  .wc-page-header__main {
+    width: 100%;
+  }
+
+  .wc-page-icon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    border-radius: 14px;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', 'Inter', sans-serif;
+    font-size: 1.65rem;
+    letter-spacing: 0.03em;
+  }
+
+  .page-subtitle {
+    font-size: 0.84rem;
+    max-width: none;
+  }
+
+  .wc-page-header .filters {
+    width: 100%;
+    margin-top: 0.15rem;
+  }
+
+  .wc-page-header .filters .btn {
+    min-height: 42px;
+    font-size: 0.88rem;
+  }
+
+  .groups-grid {
+    gap: 0.85rem;
+  }
+
+  .group-card--wc {
+    padding-top: calc(1rem + 3px);
+  }
+
+  .group-card--wc h3 {
+    font-size: 1.35rem;
+  }
+
+  .rank-badge {
+    min-width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+}
+
 .filters {
   display: flex;
   gap: 0.5rem;
