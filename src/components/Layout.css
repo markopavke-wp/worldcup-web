@@ -213,6 +213,13 @@
   opacity: 0.8;
 }
 
+.app-build-id {
+  opacity: 0.45;
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 .menu-toggle {
   display: none;
   flex-direction: column;

@@ -29,7 +29,7 @@ export default function LeaderboardPage() {
       <PageHeader
         icon="🏆"
         title="Tabela takmičara"
-        subtitle="1 poen ishod · 2 poena rezultat · 3 poena oba. Klikni na igrača za tipove na završenim utakmicama."
+        subtitle="Poeni · ishodi (1/X/2) · tačni rezultati · ukupno tipova. Klikni na igrača za detalje."
       />
 
       {loading && <p className="empty">Učitavam...</p>}
@@ -42,9 +42,22 @@ export default function LeaderboardPage() {
               <tr>
                 <th>#</th>
                 <th>Igrač</th>
-                <th>Poeni</th>
-                <th>Ishodi</th>
-                <th>Tipovi</th>
+                <th>
+                  <span className="lb-col-full">Poeni</span>
+                  <span className="lb-col-short" aria-hidden="true">P</span>
+                </th>
+                <th>
+                  <span className="lb-col-full">Ishodi</span>
+                  <span className="lb-col-short" aria-hidden="true" title="Pogodjeni ishodi 1/X/2">1/X/2</span>
+                </th>
+                <th>
+                  <span className="lb-col-full">Rezultati</span>
+                  <span className="lb-col-short" aria-hidden="true" title="Tačni rezultati">Rez.</span>
+                </th>
+                <th>
+                  <span className="lb-col-full">Tipovi</span>
+                  <span className="lb-col-short" aria-hidden="true" title="Ukupno tipovanja">Tip.</span>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -62,6 +75,7 @@ export default function LeaderboardPage() {
                   </td>
                   <td><strong>{row.totalPoints}</strong></td>
                   <td>{row.outcomeHits}</td>
+                  <td>{row.exactHits}</td>
                   <td>{row.predictionsCount}</td>
                 </tr>
               ))}

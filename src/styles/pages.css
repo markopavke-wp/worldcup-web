@@ -299,6 +299,11 @@
 
 .leaderboard-table {
   min-width: 100%;
+  width: 100%;
+}
+
+.leaderboard-table .lb-col-short {
+  display: none;
 }
 
 .leaderboard-table th,
@@ -378,19 +383,49 @@
     margin-left: -0.25rem;
     margin-right: -0.25rem;
     border-radius: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .leaderboard-table {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
+    min-width: 340px;
+  }
+
+  .leaderboard-table .lb-col-full {
+    display: none;
+  }
+
+  .leaderboard-table .lb-col-short {
+    display: inline;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
   }
 
   .leaderboard-table th,
   .leaderboard-table td {
-    padding: 0.55rem 0.4rem;
+    padding: 0.5rem 0.3rem;
+  }
+
+  .leaderboard-table th:first-child,
+  .leaderboard-table td:first-child {
+    padding-left: 0.5rem;
+  }
+
+  .leaderboard-table th:last-child,
+  .leaderboard-table td:last-child {
+    padding-right: 0.5rem;
   }
 
   .leaderboard-table .player-cell {
-    max-width: 88px;
+    max-width: 72px;
+    font-size: 0.8rem;
+  }
+
+  .rank-badge {
+    min-width: 1.55rem;
+    height: 1.55rem;
+    font-size: 0.78rem;
   }
 }
 

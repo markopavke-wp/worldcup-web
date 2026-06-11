@@ -140,6 +140,7 @@ export default function Layout() {
           <img src="/images/flag-us.png" alt="" className="app-footer__flag" />
           <img src="/images/flag-ca.png" alt="" className="app-footer__flag" />
           <span>FIFA World Cup 2026</span>
+          <span className="app-build-id" title="Verzija deploya">{__BUILD_ID__}</span>
         </div>
       </footer>
     </div>

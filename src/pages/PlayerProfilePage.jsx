@@ -56,8 +56,9 @@ export default function PlayerProfilePage() {
                 <p><span className="label">Rang:</span> #{stats.rank}</p>
               </div>
               <div className="card wc-card">
-                <p><span className="label">Ishodi:</span> {stats.outcomeHits}</p>
-                <p><span className="label">Tipovi:</span> {stats.predictionsCount}</p>
+                <p><span className="label">Ishodi (1/X/2):</span> {stats.outcomeHits}</p>
+                <p><span className="label">Tačni rezultati:</span> {stats.exactHits}</p>
+                <p><span className="label">Ukupno tipova:</span> {stats.predictionsCount}</p>
               </div>
             </div>
           )}
