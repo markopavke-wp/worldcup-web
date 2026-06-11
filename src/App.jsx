@@ -7,6 +7,7 @@ import MatchesPage from './pages/MatchesPage';
 import LeaderboardPage from './pages/LeaderboardPage';
 import StandingsPage from './pages/StandingsPage';
 import ProfilePage from './pages/ProfilePage';
+import PlayerProfilePage from './pages/PlayerProfilePage';
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="leaderboard" element={<LeaderboardPage />} />
             <Route path="standings" element={<StandingsPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="igrac/:userId" element={<PlayerProfilePage />} />
           </Route>
         </Routes>
       </BrowserRouter>

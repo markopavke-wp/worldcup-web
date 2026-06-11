@@ -37,6 +37,7 @@ export const api = {
       body: JSON.stringify(payload),
     }),
   getMyPredictions: () => request('/api/predictions/me'),
+  getUserPredictions: (userId) => request(`/api/predictions/user/${userId}`),
   getLeaderboard: () => request('/api/leaderboard'),
   getStandings: () => request('/api/standings'),
 };

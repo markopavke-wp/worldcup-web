@@ -206,6 +206,34 @@
   text-overflow: ellipsis;
 }
 
+.player-link {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.player-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.player-stats-grid {
+  margin-top: 1rem;
+}
+
 @media (max-width: 639px) {
   .leaderboard-wrap {
     margin-left: -0.25rem;

@@ -39,7 +39,6 @@ export default function ProfilePage() {
             <>
               <p><span className="label">Ukupno poena:</span> <strong>{myStats?.totalPoints ?? 0}</strong></p>
               <p><span className="label">Rang:</span> {myStats?.rank ?? '-'}</p>
-              <p><span className="label">Tačni:</span> {myStats?.exactHits ?? 0}</p>
               <p><span className="label">Ishodi:</span> {myStats?.outcomeHits ?? 0}</p>
               <p><span className="label">Tipovi:</span> {myStats?.predictionsCount ?? 0}</p>
             </>

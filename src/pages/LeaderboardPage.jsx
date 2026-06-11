@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
@@ -18,7 +19,9 @@ export default function LeaderboardPage() {
   return (
     <div>
       <h1 className="page-title">Tabela takmičara</h1>
-      <p className="page-subtitle">1 poen ishod · 2 poena rezultat · 3 poena oba</p>
+      <p className="page-subtitle">
+        1 poen ishod · 2 poena rezultat · 3 poena oba. Klikni na igrača za tipove na završenim utakmicama.
+      </p>
 
       {loading && <p className="empty">Učitavam...</p>}
       {error && <p className="error">{error}</p>}
@@ -31,7 +34,6 @@ export default function LeaderboardPage() {
                 <th>#</th>
                 <th>Igrač</th>
                 <th>Poeni</th>
-                <th>Tačni</th>
                 <th>Ishodi</th>
                 <th>Tipovi</th>
               </tr>
@@ -40,9 +42,16 @@ export default function LeaderboardPage() {
               {leaderboard.map((row) => (
                 <tr key={row.userId} className={row.userId === user?.id ? 'me' : ''}>
                   <td>{row.rank}</td>
-                  <td className="player-cell">{row.displayName}</td>
+                  <td className="player-cell">
+                    {row.userId === user?.id ? (
+                      <Link to="/profile" className="player-link">{row.displayName}</Link>
+                    ) : (
+                      <Link to={`/igrac/${row.userId}`} className="player-link">
+                        {row.displayName}
+                      </Link>
+                    )}
+                  </td>
                   <td><strong>{row.totalPoints}</strong></td>
-                  <td>{row.exactHits}</td>
                   <td>{row.outcomeHits}</td>
                   <td>{row.predictionsCount}</td>
                 </tr>
