@@ -1,0 +1,68 @@
+.team-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  text-align: center;
+  min-width: 0;
+}
+
+.team-badge.align-left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.team-flag {
+  width: 36px;
+  height: 25px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 640px) {
+  .team-flag {
+    width: 40px;
+    height: 28px;
+  }
+}
+
+.team-code {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.team-name {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+@media (max-width: 400px) {
+  .team-name {
+    font-size: 0.65rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+.team-score {
+  font-size: 1.35rem;
+  color: var(--gold);
+  margin-top: 0.1rem;
+}
+
+@media (min-width: 640px) {
+  .team-score {
+    font-size: 1.5rem;
+  }
+}
