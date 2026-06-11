@@ -180,23 +180,84 @@
   font-size: clamp(1.1rem, 3vw, 1.35rem);
 }
 
-@media (max-width: 520px) {
-  .data-table th:nth-child(5),
-  .data-table td:nth-child(5),
-  .data-table th:nth-child(6),
-  .data-table td:nth-child(6) {
+/* Leaderboard — kartice na mobilnom, tabela na desktopu */
+.leaderboard-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.leaderboard-table-desktop {
+  display: none;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .leaderboard-cards {
     display: none;
   }
 
-  .data-table th,
-  .data-table td {
-    padding: 0.65rem 0.45rem;
-    font-size: 0.8rem;
+  .leaderboard-table-desktop {
+    display: block;
   }
+}
 
-  .data-table td:first-child {
-    padding-left: 0.65rem;
-  }
+.leaderboard-card.me {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(0, 200, 150, 0.2);
+}
+
+.leaderboard-card-top {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.leaderboard-rank {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.leaderboard-name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboard-points {
+  color: var(--gold);
+  font-size: 1.25rem;
+}
+
+.leaderboard-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.leaderboard-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+.leaderboard-stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.leaderboard-stat strong {
+  font-size: 1.1rem;
 }
 
 .group-card .table-wrap {

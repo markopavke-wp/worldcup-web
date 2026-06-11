@@ -24,32 +24,63 @@ export default function LeaderboardPage() {
       {error && <p className="error">{error}</p>}
 
       {!loading && !error && (
-        <div className="card table-wrap">
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Igrač</th>
-                <th>Poeni</th>
-                <th>Tačni</th>
-                <th>Ishodi</th>
-                <th>Tipova</th>
-              </tr>
-            </thead>
-            <tbody>
-              {leaderboard.map((row) => (
-                <tr key={row.userId} className={row.userId === user?.id ? 'me' : ''}>
-                  <td>{row.rank}</td>
-                  <td>{row.displayName}</td>
-                  <td><strong>{row.totalPoints}</strong></td>
-                  <td>{row.exactHits}</td>
-                  <td>{row.outcomeHits}</td>
-                  <td>{row.predictionsCount}</td>
+        <>
+          <div className="leaderboard-cards">
+            {leaderboard.map((row) => (
+              <div
+                key={row.userId}
+                className={`leaderboard-card card ${row.userId === user?.id ? 'me' : ''}`}
+              >
+                <div className="leaderboard-card-top">
+                  <span className="leaderboard-rank">#{row.rank}</span>
+                  <span className="leaderboard-name">{row.displayName}</span>
+                  <strong className="leaderboard-points">{row.totalPoints}</strong>
+                </div>
+                <div className="leaderboard-card-stats">
+                  <div className="leaderboard-stat">
+                    <span className="leaderboard-stat-label">Tačni</span>
+                    <strong>{row.exactHits}</strong>
+                  </div>
+                  <div className="leaderboard-stat">
+                    <span className="leaderboard-stat-label">Ishodi</span>
+                    <strong>{row.outcomeHits}</strong>
+                  </div>
+                  <div className="leaderboard-stat">
+                    <span className="leaderboard-stat-label">Tipova</span>
+                    <strong>{row.predictionsCount}</strong>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="card table-wrap leaderboard-table-desktop">
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Igrač</th>
+                  <th>Poeni</th>
+                  <th>Tačni</th>
+                  <th>Ishodi</th>
+                  <th>Tipova</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {leaderboard.map((row) => (
+                  <tr key={row.userId} className={row.userId === user?.id ? 'me' : ''}>
+                    <td>{row.rank}</td>
+                    <td>{row.displayName}</td>
+                    <td><strong>{row.totalPoints}</strong></td>
+                    <td>{row.exactHits}</td>
+                    <td>{row.outcomeHits}</td>
+                    <td>{row.predictionsCount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
     </div>
   );
