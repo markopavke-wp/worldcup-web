@@ -17,7 +17,10 @@ async function request(path, options = {}) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok) {
-    throw new Error(data.error || 'Greška na serveru');
+    const fallback = response.status === 404
+      ? 'Resurs nije pronađen — proveri da li je API redeployovan'
+      : `Greška na serveru (${response.status})`;
+    throw new Error(data.error || fallback);
   }
 
   return data;
@@ -37,7 +40,7 @@ export const api = {
       body: JSON.stringify(payload),
     }),
   getMyPredictions: () => request('/api/predictions/me'),
-  getUserPredictions: (userId) => request(`/api/predictions/user/${userId}`),
+  getUserPredictions: (userId) => request(`/api/users/${userId}/predictions`),
   getLeaderboard: () => request('/api/leaderboard'),
   getStandings: () => request('/api/standings'),
 };
