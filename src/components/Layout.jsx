@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import TrophyIcon from './icons/TrophyIcon';
+import CelebrationModal from './CelebrationModal';
 import './Layout.css';
 
 const navItems = [
@@ -133,6 +134,8 @@ export default function Layout() {
       <main className="container main-content">
         <Outlet />
       </main>
+
+      <CelebrationModal />
 
       <footer className="app-footer">
         <div className="container app-footer__inner">
